@@ -12,4 +12,8 @@
     <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
         <property name="targetBeanName" value="user"/>
     </bean>
+
+    <bean id="superUser" class="com.forjson.spring.ioc.container.overview.domain.SuperUser" parent="user">
+        <property name="address" value="北京"/>
+    </bean>
 </beans>
