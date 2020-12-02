@@ -11,6 +11,8 @@
     <modules>
         <module>ioc-container-overview</module>
         <module>spring-bean</module>
+        <module>ioc-container-overview</module>
+        <module>spring-bean</module>
     </modules>
 
 
