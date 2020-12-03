@@ -13,7 +13,7 @@
         <property name="targetBeanName" value="user"/>
     </bean>
 
-    <bean id="superUser" class="com.forjson.spring.ioc.container.overview.domain.SuperUser" parent="user">
+    <bean id="superUser" class="com.forjson.spring.ioc.container.overview.domain.SuperUser" parent="user" primary="true">
         <property name="address" value="北京"/>
     </bean>
 </beans>
