@@ -1,0 +1,2 @@
+com.forjson.spring.bean.instantiation.factory.DefaultUserFactory
+com.forjson.spring.bean.instantiation.factory.HowlikedUserFactory

@@ -11,5 +11,11 @@
 
     <artifactId>spring-bean</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.forjson.spring</groupId>
+            <artifactId>ioc-container-overview</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

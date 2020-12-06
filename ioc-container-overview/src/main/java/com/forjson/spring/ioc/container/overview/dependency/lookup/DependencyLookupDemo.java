@@ -1,4 +1,4 @@
-package com.forjson.spring.ioc.container.overview.core;
+package com.forjson.spring.ioc.container.overview.dependency.lookup;
 
 import com.forjson.spring.ioc.container.overview.annotation.Super;
 import com.forjson.spring.ioc.container.overview.domain.User;
@@ -18,6 +18,7 @@ public class DependencyLookupDemo {
         lookupByLazy(beanFactory);
         //根据类型查找
         lookupByType(beanFactory);
+        //根据类型查找集合
         lookupCollectionByType(beanFactory);
         //根据注解查找
         lookupByAnnotation(beanFactory);
