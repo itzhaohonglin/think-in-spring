@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
+
     <bean id="user" class="com.forjson.spring.ioc.container.overview.domain.User">
         <property name="id" value="1"/>
         <property name="name" value="howliked"/>
@@ -12,7 +13,6 @@
     <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
         <property name="targetBeanName" value="user"/>
     </bean>
-
     <bean id="superUser" class="com.forjson.spring.ioc.container.overview.domain.SuperUser" parent="user" primary="true">
         <property name="address" value="北京"/>
     </bean>

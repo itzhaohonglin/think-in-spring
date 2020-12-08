@@ -18,6 +18,7 @@ public class AnnotationApplicationContextAsIoCContainerDemo {
         applicationContext.register(AnnotationApplicationContextAsIoCContainerDemo.class);
         applicationContext.refresh();
         lookupCollectionByType(applicationContext);
+        applicationContext.close();
     }
 
     private static void lookupCollectionByType(BeanFactory beanFactory) {
