@@ -4,12 +4,13 @@ import com.forjson.spring.ioc.container.overview.repository.UserRepository;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+/**
+ * 依赖注入 演示
+ */
 public class DependencyInjectionDemo {
     public static void main(String[] args) {
-        //配置XML配置文件
         //启动XML配置文件
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:META-INF/dependency-inject-context.xml");
-
         UserRepository userRepository = beanFactory.getBean(UserRepository.class);
         //依赖注入
         System.out.println(userRepository.getBeanFactory());
