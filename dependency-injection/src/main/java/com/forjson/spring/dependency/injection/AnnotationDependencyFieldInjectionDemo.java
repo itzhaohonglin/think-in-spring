@@ -13,7 +13,9 @@ import org.springframework.context.annotation.Bean;
 public class AnnotationDependencyFieldInjectionDemo {
 
     @Autowired
-    private UserHolder userHolder;
+    private
+//    static        //@Autowire 会忽略static变量修饰
+    UserHolder userHolder;
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
