@@ -9,6 +9,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Map;
 
+/**
+ * 依赖查找 演示
+ */
 public class DependencyLookupDemo {
     public static void main(String[] args) {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:META-INF/dependency-lookup-context.xml");
@@ -28,7 +31,7 @@ public class DependencyLookupDemo {
         if (beanFactory instanceof ListableBeanFactory) {
             ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
             Map<String, User> users = listableBeanFactory.getBeansOfType(User.class);
-            System.out.println("集合类型查找:"+users);
+            System.out.println("集合类型查找:" + users);
         }
     }
 
@@ -36,13 +39,14 @@ public class DependencyLookupDemo {
         if (beanFactory instanceof ListableBeanFactory) {
             ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
             Map<String, Object> beansWithAnnotation = listableBeanFactory.getBeansWithAnnotation(Super.class);
-            System.out.println("根据注解方式查找:"+beansWithAnnotation);
+            System.out.println("根据注解方式查找:" + beansWithAnnotation);
         }
     }
 
     /**
      * 只能获取一个相同的类型,否则会报错
-     * 解决方案: 在xml中配置主要类型 . "primary = "true""
+     * 解决方案: 在xml中配置主要类型  "primary = "true""
+     *
      * @param beanFactory
      */
     private static void lookupByType(BeanFactory beanFactory) {

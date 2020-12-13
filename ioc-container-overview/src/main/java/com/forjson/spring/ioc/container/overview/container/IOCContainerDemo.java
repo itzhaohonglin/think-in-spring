@@ -8,6 +8,9 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 import java.util.Map;
 
+/**
+ * {@link BeanFactory} IoC容器 演示
+ */
 public class IOCContainerDemo {
     public static void main(String[] args) {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
@@ -15,7 +18,7 @@ public class IOCContainerDemo {
         //XML配置文件加载
         String location = "classpath:/META-INF/dependency-lookup-context.xml";
         int loadCount = reader.loadBeanDefinitions(location);
-        System.out.println("Bean加载数量:"+loadCount);
+        System.out.println("Bean加载数量:" + loadCount);
         lookupCollectionByType(beanFactory);
     }
 
@@ -23,7 +26,7 @@ public class IOCContainerDemo {
         if (beanFactory instanceof ListableBeanFactory) {
             ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
             Map<String, User> users = listableBeanFactory.getBeansOfType(User.class);
-            System.out.println("集合类型查找:"+users);
+            System.out.println("集合类型查找:" + users);
         }
     }
 }

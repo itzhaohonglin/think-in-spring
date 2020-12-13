@@ -28,4 +28,12 @@ public class UserRepository {
     public void setBeanFactory(BeanFactory beanFactory) {
         this.beanFactory = beanFactory;
     }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("UserRepository{");
+        sb.append("users=").append(users);
+        sb.append('}');
+        return sb.toString();
+    }
 }
