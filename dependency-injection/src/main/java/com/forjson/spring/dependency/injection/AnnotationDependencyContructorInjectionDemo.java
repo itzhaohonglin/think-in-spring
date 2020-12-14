@@ -7,7 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 
 /**
- * 基于 注解配置构造器Constructor注入 演示
+ * 基于 注解配置Setter注入 演示
  */
 public class AnnotationDependencyContructorInjectionDemo {
     public static void main(String[] args) {
@@ -16,13 +16,10 @@ public class AnnotationDependencyContructorInjectionDemo {
         String location = "classpath:/META-INF/dependency-lookup-context.xml";
         //加载XML资源,并加载为beanDefinition
         reader.loadBeanDefinitions(location);
-        //注册当前类为配置类
         applicationContext.register(AnnotationDependencyContructorInjectionDemo.class);
-        //启动应用上下文
         applicationContext.refresh();
         UserHolder userHolder = applicationContext.getBean(UserHolder.class);
         System.out.println("userHolder:" + userHolder);
-        //关闭应用上下文
         applicationContext.close();
     }
 
