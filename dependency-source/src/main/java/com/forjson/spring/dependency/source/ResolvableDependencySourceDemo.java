@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 
 /**
  * ResolvableDependencySource 演示
+ * 只能通过注入方法,不能使用依赖查找 {@link DependencySourceDemo} 演示
  */
 public class ResolvableDependencySourceDemo {
 
