@@ -12,6 +12,8 @@ import javax.annotation.PostConstruct;
 
 /**
  * 依赖来源  演示
+ *
+ * ResolvableDependency:游离对象,可解决依赖对象。 只能用来注入,不能用来查找
  * <p>
  * 1. 调用{@link org.springframework.context.support.AbstractApplicationContext#refresh}时,prepareBeanFactory(beFactory)方法
  * 注入了4个对象 (2个Bean -> beanFactory 和 当前应用上下文)
