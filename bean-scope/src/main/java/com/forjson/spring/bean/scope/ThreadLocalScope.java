@@ -2,8 +2,24 @@ package com.forjson.spring.bean.scope;
 
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;
+import org.springframework.core.NamedThreadLocal;
 
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 自定义Scope:thread-local 作用域
+ */
 public class ThreadLocalScope implements Scope {
+
+    public static final String SCOPE_NAME = "thread-local";
+
+    private NamedThreadLocal<Map<String, Object>> threadLocal = new NamedThreadLocal(ThreadLocalScope.SCOPE_NAME) {
+        @Override
+        protected Object initialValue() {
+            return new HashMap<>();
+        }
+    };
 
     /**
      * 取出scope的值
@@ -13,8 +29,24 @@ public class ThreadLocalScope implements Scope {
      * @return
      */
     @Override
+
     public Object get(String name, ObjectFactory<?> objectFactory) {
-        return null;
+        Map<String, Object> context = getContext();
+        Object o = context.get(name);
+        if (o == null) {
+            o = objectFactory.getObject();
+            context.put(name, o);
+        }
+        return o;
+    }
+
+    /**
+     * 获取应用上下文;
+     *
+     * @return
+     */
+    private Map<String, Object> getContext() {
+        return threadLocal.get();
     }
 
     /**
@@ -25,7 +57,8 @@ public class ThreadLocalScope implements Scope {
      */
     @Override
     public Object remove(String name) {
-        return null;
+        Map<String, Object> context = getContext();
+        return context.remove(name);
     }
 
     /**
@@ -37,6 +70,7 @@ public class ThreadLocalScope implements Scope {
     @Override
     public void registerDestructionCallback(String name, Runnable callback) {
 
+        //todo
     }
 
     /**
@@ -47,7 +81,8 @@ public class ThreadLocalScope implements Scope {
      */
     @Override
     public Object resolveContextualObject(String key) {
-        return null;
+        Map<String, Object> context = getContext();
+        return context.get(key);
     }
 
     /**
@@ -57,6 +92,7 @@ public class ThreadLocalScope implements Scope {
      */
     @Override
     public String getConversationId() {
-        return null;
+
+        return String.valueOf(Thread.currentThread().getId());
     }
 }
