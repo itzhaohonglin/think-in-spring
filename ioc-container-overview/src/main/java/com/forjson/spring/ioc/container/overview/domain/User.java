@@ -1,8 +1,19 @@
 package com.forjson.spring.ioc.container.overview.domain;
 
-public class User {
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class User implements InitializingBean, DisposableBean {
     private Long id;
     private String name;
+
+    /**
+     * bean-scope create
+     */
+    @Autowired
+    private BeanFactory beanFactory;
 
     public User() {
     }
@@ -34,10 +45,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        final StringBuffer sb = new StringBuffer("User{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 
     public static User createUser() {
@@ -45,5 +57,15 @@ public class User {
         user.setId(2L);
         user.setName("static-method-instantiation");
         return user;
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.printf("当前Bean: %s 正在销毁... \n", this.getClass().getName());
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.printf("当前Bean: %s 正在初始化...\n", this.getClass().getName());
     }
 }
